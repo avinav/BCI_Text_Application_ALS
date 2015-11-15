@@ -1,3 +1,4 @@
+
 function startQues(){
 	var charTable = document.getElementById("alpha_table");
 	charTable.innerHTML = "";
@@ -172,6 +173,10 @@ function startQues(){
 		cells +="<td style='float:left; width=100% text-align:left;' class='btn0' id=phrase_"+value+">"+value+"</td>";
 		cells += "</tr>";
 		chat_table.innerHTML += cells;
+                console.log("calling sms func");
+                send_sms(value);
+                console.log("called sms func");
+
 	}
 
 	function stop_answering(){

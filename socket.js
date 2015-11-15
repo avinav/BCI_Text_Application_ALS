@@ -2,6 +2,7 @@ var response_recieved = false;
 var socket = null;
 	var isopen = false;
 	var mood = '';
+	var socket1 = null;
 	window.onload = function() {
 	var artist = $("#artist").val();
 	   $("#img1").hide();
@@ -27,6 +28,35 @@ var socket = null;
 	      socket = null;
 	      isopen = false;
 	   }
+
+
+	   socket1 = new WebSocket("ws://127.0.0.1:9001");
+	   socket1.binaryType = "arraybuffer";
+	   socket1.onopen = function() {
+	      console.log("Connected!");
+	      isopen = true;
+	   }
+	   socket1.onmessage = function(e) {
+	  
+	         console.log("Text message received: " + e.data);
+	      
+	   }
+	   socket1.onclose = function(e) {
+	      console.log("Connection closed.");
+	      socket1 = null;
+	      isopen = false;
+	   }
 	};
+
+     function send_sms(text) {
+           if (isopen) {
+              socket1.send(text);
+              console.log("Text message sent." + text);               
+           } else {
+              console.log("Connection not opened.")
+           }
+        };
+
+
 
 // startChars();
