@@ -4,16 +4,16 @@ var stop_id = 13;
 var row_len = 5, col_len = 6;
 var response_recieved = false, breakFlag=false;
 var timeout = 1000;
-var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","E","B","N","P"];
 
 
 function create_table(){
 	var cells = "";
 	var k = 0;
 	console.log(alphabet.length);
-	for(var i=0;i<5;i++){
+	for(var i=0;i<row_len;i++){
 		cells += "<tr>";
-		for(var j=0;j<6;j++){
+		for(var j=0;j<col_len;j++){
 			if(k<alphabet.length){
 				cells +="<td id="+(alphabet[k])+">"+(alphabet[k++])+"</td>";
 			}
@@ -39,9 +39,12 @@ function resetTableWeight(){
 
 function highlight_cell(row_index, col_index){
 	var row = table.rows[row_index]
-	row.style.fontWeight = 'bold'
-	resetColumnDeco(row_index);
-	row.cells[col_index].style.textDecoration = 'underline';
+	if(row){
+		row.style.fontWeight = 'bold'
+		resetColumnDeco(row_index);
+		if(row.cells[col_index])
+			row.cells[col_index].style.textDecoration = 'underline';
+	}
 }
 
 function resetColumnDeco(row_index){
@@ -83,7 +86,10 @@ function start_answering(){
 			row_id = (row_id+1)%row_len;
 		    setTimeout(row_travel, timeout);
 		} else if(!breakFlag){
-			row_id--;
+			if(row_id==0)
+				row_id = row_len-1;
+			else
+				row_id--;
 			response_recieved = false;
 			setTimeout(col_travel, timeout);
 		}
@@ -95,7 +101,10 @@ function start_answering(){
 			col_id = (col_id+1)%col_len;
 		    setTimeout(col_travel, timeout);
 		} else if(!breakFlag){
-			col_id--;
+			if(col_id==0)
+				col_id = col_len-1;
+			else
+				col_id--;
 			console.log("Row to focus:"+row_id +"  Col to focus:"+col_id+"  Value:"+alphabet[(row_id*col_len) + col_id]);
 			appendAnswer(alphabet[(row_id*col_len) + col_id]);
 			resetAll();
