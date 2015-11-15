@@ -2,6 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 <script type="text/javascript" src="js/TweenLite.min.js"></script>
 <script type="text/javascript" src="js/TweenMax.min.js"></script>
 <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
@@ -10,14 +11,14 @@
 <style>
 body{
 	margin:0;
-	background-color:#FFFFFF;
+	background-color:#C0C0C0;
 	overflow:auto;
 }
 
-.btn{
-	background:#C0C0C0;
-	height:130px;
-	width:130px;
+.btn0{
+	background:#FFFFFF;
+	height:120px;
+	width:120px;
 	/*position:relative;*/
 	margin-left:10px;
 	margin-right:10px;
@@ -34,9 +35,9 @@ body{
 }
 
 .btn1{
-	background:#C0C0C0;
-	height:105px;
-	width:105px;
+	background:#FFFFFF;
+	height:120px;
+	width:120px;
 	/*position:relative;*/
 	margin-left:10px;
 	margin-right:8px;
@@ -45,13 +46,30 @@ body{
 	cursor:pointer;
 	
 	color:#000000;
-	font-size:40px;
+	font-size:50px;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	/*line-height:300px;*/
 	padding-left:10px;
 	text-align:left;	
 }
-
+.btn2{
+	background:#FFFFFF;
+	height:60px;
+	width:220px;
+	/*position:relative;*/
+	margin-left:10px;
+	margin-right:8px;
+	margin-top:10px;
+	left:900px;
+	cursor:pointer;
+	
+	color:#000000;
+	font-size:30px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	/*line-height:300px;*/
+	padding-left:10px;
+	text-align:left;	
+}
 #content{
 	background:#369;
 	height:480px;
@@ -85,6 +103,13 @@ body{
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
+.button-xlarge {
+	width: 300px;
+	height:170px;
+    font-size: 200%;
+    padding-right: 20px;
+    /*background-color: blue;*/
+}
 
 </style>
 </head>
@@ -101,56 +126,64 @@ body{
   </div>
 
 </div>
-<div class="form-group" style="width:850px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
-      <bold><label for="txtQuestion" size="35%" style="padding-right:10px;font-size:30px;font-weight: bold;
+<div class="form-group" style="width:1000px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px; padding-left:18px;">
+      <!-- <bold><label for="txtQuestion" size="35%" style="padding-left:8px; padding-right:10px;font-size:30px;font-weight: bold;
       	padding-bottom:10px">Question:
       </bold></label></br></br>
-      <input type="text" class="form-control" id="txtQuestion" size="82%"
-      style="height:30px;font-size:20px">
+      <input type="text" class="form-control" id="txtQuestion" size="78	%"
+      style="padding-left:18px; height:30px;font-size:20px"> -->
+      	<button type="button" id="myBtn">Try it</button></br></br>
+      	<button class="button-xlarge pure-button" id = "btnQues" onclick="startQues()">Questions</button>
+      	<button class="button-xlarge pure-button" id = "btnPhrase" onclick="startPhrase()">Phrases</button>
+      	<button class="button-xlarge pure-button" id = "btnChars" onclick="startChars()">Characters</button>
 </div>
-<table align="center">
-	<tr>
-		<td>
-			<!--buttons-->
-			<div style="width:850px; height:650px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
-				
-				<div id="btnA" style="float:left" class="btn"> <p> A </p> </div>			   
-		    	<div id="btnB" style="float:left" class="btn"> <p> B </p> </div> 
-				<div id="btnC" style="float:left" class="btn"> <p> C </p> </div>
-			    <div id="btnD" style="float:left" class="btn"> <p> D </p> </div>			    
-		    	<div id="btnE" style="float:left" class="btn"> <p> E </p> </div>			    			  <div id="btnF" style="float:left" class="btn"> <p> F </p> </div>
-		    	<div id="btnG" style="float:left" class="btn"> <p> G </p> </div>
-		    	<div id="btnH" style="float:left" class="btn"> <p> H </p> </div>
-		    	<div id="btnI" style="float:left" class="btn"> <p> I </p> </div>
-		    	<div id="btnJ" style="float:left" class="btn"> <p> J </p> </div>
-		    	<div id="btnK" style="float:left" class="btn"> <p> K </p> </div>
-		    	<div id="btnL" style="float:left" class="btn"> <p> L </p> </div>
-		    	<div id="btnM" style="float:left" class="btn"> <p> M </p> </div>
-		    	<div id="btnN" style="float:left" class="btn"> <p> N </p> </div>
-		    	<div id="btnO" style="float:left" class="btn"> <p> O </p> </div>
-		    	<div id="btnP" style="float:left" class="btn"> <p> P </p> </div>
-		    	<div id="btnQ" style="float:left" class="btn"> <p> Q </p> </div>
-		    	<div id="btnR" style="float:left" class="btn"> <p> R </p> </div>
-		    	<div id="btnS" style="float:left" class="btn"> <p> S </p> </div>
-		    	<div id="btnT" style="float:left" class="btn"> <p> T </p> </div>
-		    	<div id="btnU" style="float:left" class="btn1"> <p> U </p> </div>
-		    	<div id="btnV" style="float:left" class="btn1"> <p> V </p> </div>
-		    	<div id="btnW" style="float:left" class="btn1"> <p> W </p> </div>
-		    	<div id="btnX" style="float:left" class="btn1"> <p> X </p> </div>
-		    	<div id="btnY" style="float:left" class="btn1"> <p> Y </p> </div>
-		    	<div id="btnZ" style="float:left" class="btn1"> <p> Z </p> </div>
-			    <!-- <div id="content" style="position:absolute"> <iframe name="main" frameborder=0 height=450 width=750></iframe>  </div> -->
-			    
-			</div>
-		</td>
-	</tr>
-</table>
-<div class="form-group" style="width:850px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
+<div id = "divChars">
+	<table align="left" style="padding-left:170px">
+		<tr>
+			<td>
+				<!--buttons-->
+				<div style="width:1000px; height:650px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
+				<table id="alpha_table">					
+				 </table>   
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id = "divQues">
+	<table align="left" style="padding-left:170px">
+		<tr>
+			<td>
+				<!--buttons-->
+				<div style="width:1000px; height:650px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
+				<table id="beta_table">					
+				 </table>   
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div id = "divPhrase">
+	<table align="left" style="padding-left:170px">
+		<tr>
+			<td>
+				<!--buttons-->
+				<div style="width:1000px; height:650px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
+				<table id="phrase_table">					
+				 </table>   
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<div style="width:1000px; height:650px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
       <bold><label size="35%" style="padding-right:10px;font-size:25px;font-weight: bold;
       	padding-bottom:10px">Result:
       </bold></label>
-      <label id="lblAns" size="82%" style="padding-right:10px;font-size:30px;font-weight: lighter;
-      	padding-bottom:10px; color:blue" >A</label>
+      <label id="answer" size="82%" style="padding-right:10px;font-size:30px;font-weight: lighter;
+      	padding-bottom:10px; color:blue" ></label>
 </div>
 
 
@@ -170,6 +203,9 @@ $(document).ready(function(){
   });
   
 </script>	
-
+<script type="text/javascript" src="chars.js"></script>
+<script type="text/javascript" src="ques.js"></script>
+<script type="text/javascript" src="phrase.js"></script>
+<script type="text/javascript" src="socket.js"></script>
 </body>
 </html>

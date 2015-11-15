@@ -1,16 +1,27 @@
 function startChars(){
+	var answer = document.getElementById("answer");
+	answer.innerHTML = "";
+	var phraseTable = document.getElementById("phrase_table");
+	phraseTable.innerHTML = "";
+	var quesTable = document.getElementById("beta_table");
+	quesTable.innerHTML = "";
+	
 	var table = document.getElementById("alpha_table");
+
 	var response_id = 76;
 	var stop_id = 13;
 	var row_len = 5, col_len = 6;
-	var response_recieved = false, breakFlag=false;
+	var breakFlag=false;
 	var timeout = 1000;
 	var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","Enter","Bksp","Next","Prev"];
 
-	// $('#divChars').hide();
+	$('#divChars').show();
 	$('#divPhrase').hide();
 	$('#divQues').hide();
-	function create_table(){
+	
+
+
+	function create_table(){		
 		var cells = "";
 		var k = 0;
 		console.log(alphabet.length);
@@ -163,35 +174,35 @@ function startChars(){
 
 	document.getElementById("myBtn").addEventListener("click", start_answering);
 
-	// var socket = null;
-	// var isopen = false;
-	// var mood = '';
-	// window.onload = function() {
-	// var artist = $("#artist").val();
-	//    $("#img1").hide();
-	//    $("#img2").hide();
-	//    socket = new WebSocket("ws://127.0.0.1:9000");
-	//    socket.binaryType = "arraybuffer";
-	//    socket.onopen = function() {
-	//       console.log("Connected!");
-	//       isopen = true;
-	//    }
-	//    socket.onmessage = function(e) {
-	//   console.log("Server called me",e.data);
-	//       if (typeof e.data == "string") {
-	//          if (e.data == 'true'){
-	// 	        $("#out").show();
-	// 	        response_recieved = true;
-	//          }
-	//          console.log("Text message received: " + e.data);
-	//       }
-	//    }
-	//    socket.onclose = function(e) {
-	//       console.log("Connection closed.");
-	//       socket = null;
-	//       isopen = false;
-	//    }
-	// };
+	var socket = null;
+	var isopen = false;
+	var mood = '';
+	window.onload = function() {
+	var artist = $("#artist").val();
+	   $("#img1").hide();
+	   $("#img2").hide();
+	   socket = new WebSocket("ws://127.0.0.1:9000");
+	   socket.binaryType = "arraybuffer";
+	   socket.onopen = function() {
+	      console.log("Connected!");
+	      isopen = true;
+	   }
+	   socket.onmessage = function(e) {
+	  console.log("Server called me",e.data);
+	      if (typeof e.data == "string") {
+	         if (e.data == 'true'){
+		        $("#out").show();
+		        response_recieved = true;
+	         }
+	         console.log("Text message received: " + e.data);
+	      }
+	   }
+	   socket.onclose = function(e) {
+	      console.log("Connection closed.");
+	      socket = null;
+	      isopen = false;
+	   }
+	};
 
 	function sendText() {
 	   if (isopen) {
