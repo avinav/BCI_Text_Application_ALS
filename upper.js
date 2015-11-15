@@ -15,11 +15,12 @@ function upper(){
 	
 	var breakFlag=false;
 	var timeout = 1000;
-	var table = ["btnQues","btnPhrase","btnChars"];
+	var table = ["btnQues","btnPhrase","btnChars", "btnEmergency"];
 	var row_len = table.length, col_len = 1;
 	$('#divChars').hide();
 	$('#divPhrase').hide();
 	$('#divQues').hide();	
+	resetAll();
 	start_answering();
 	// function create_table(){		
 	// 	var cells = "";
@@ -96,12 +97,12 @@ function upper(){
 		}
 	}
 
-	function resetAll(row_id){
+	function resetAll(){
 		var rows = table;
 		for(var i = 0; i < rows.length; i++){
-			if(i != row_id){
+			// if(i != row_id){
 				$('#'+rows[i]).css("background-color", "#cef8ff");
-			}
+			// }
 			// for(var j = 0; j < childs.length; j++){
 			// 	child = childs[j].id;
 			// 	$('#'+child).css("background-color", "White");
@@ -186,9 +187,6 @@ function upper(){
 		// 	else
 		// 		answer.innerHTML = temp.substring(0,temp.length-1);
 		// }
-		if(value == "Prev"){
-			upper();
-		}
 		$('#'+value).click();
 
 	}
