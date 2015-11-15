@@ -17,21 +17,24 @@ body{
 
 .btn0{
 	background:#FFFFFF;
-	height:120px;
-	width:120px;
+	height:80px;
+	width:620px;
 	/*position:relative;*/
 	margin-left:10px;
-	margin-right:10px;
+	margin-right:8px;
 	margin-top:10px;
 	left:900px;
 	cursor:pointer;
 	
 	color:#000000;
-	font-size:45px;
+	font-size:35px;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	/*line-height:300px;*/
 	padding-left:10px;
-	text-align:left;	
+	padding-top:25px;
+	/*text-align:left;*/	
+	border-radius: 15px;
+	background-color: #cef8ff;
 }
 
 .btn1{
@@ -50,12 +53,14 @@ body{
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	/*line-height:300px;*/
 	padding-left:10px;
+	/*padding-top:25px;*/
 	text-align:left;	
+	border-radius: 15px;
 }
 .btn2{
 	background:#FFFFFF;
-	height:60px;
-	width:220px;
+	height:80px;
+	width:620px;
 	/*position:relative;*/
 	margin-left:10px;
 	margin-right:8px;
@@ -64,11 +69,13 @@ body{
 	cursor:pointer;
 	
 	color:#000000;
-	font-size:30px;
+	font-size:35px;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	/*line-height:300px;*/
 	padding-left:10px;
-	text-align:left;	
+	padding-top:25px;
+	text-align:center;	
+	border-radius: 15px;
 }
 #content{
 	background:#369;
@@ -106,9 +113,17 @@ body{
 .button-xlarge {
 	width: 300px;
 	height:170px;
-    font-size: 200%;
-    padding-right: 20px;
-    /*background-color: blue;*/
+    font-size: 300%;
+    /*padding-right: 50px;*/
+    padding: 0px;
+	background-color: #ffff; background-image: -webkit-gradient(linear, left top, left bottom, from(#cef8ff), to(#7fe0f8));
+	background-image: -webkit-linear-gradient(top, #cef8ff, #7fe0f8);
+	background-image: -moz-linear-gradient(top, #cef8ff, #7fe0f8);
+	background-image: -ms-linear-gradient(top, #cef8ff, #7fe0f8);
+	background-image: -o-linear-gradient(top, #cef8ff, #7fe0f8);
+	background-image: linear-gradient(to bottom, #cef8ff, #7fe0f8);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#cef8ff, endColorstr=#7fe0f8);    
+    border-radius: 25px;
+	margin-right: 45px;
 }
 
 </style>
@@ -116,17 +131,17 @@ body{
 
 <body link="#FFFFFF">
 <!--header-->
-<div style="width:100%; height:80px; overflow:hidden; margin: 0 auto; background-color:#333">
+<div style="width:100%; height:100px; overflow:hidden; margin: 0 auto; background-color:#333">
 
   <div style="width:750px; height:80px; overflow:hidden; position:relative">
 		
-       <div id="caption" style="height:44px; margin-top:10px; margin-left:12px; position:absolute"> 
+       <div id="caption" style="height:44px; margin-top:-25px; margin-left:132px; position:absolute"> 
 
-       	<h1 style="font-size:150%">Words for Mute</h1></div>               
+       	<h1 style="font-size:250%">Words for Mute</h1></div>               
   </div>
 
 </div>
-<div class="form-group" style="width:1000px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px; padding-left:18px;">
+<div class="form-group" style="width:1050px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px; padding-left:18px;">
       <!-- <bold><label for="txtQuestion" size="35%" style="padding-left:8px; padding-right:10px;font-size:30px;font-weight: bold;
       	padding-bottom:10px">Question:
       </bold></label></br></br>
@@ -137,51 +152,77 @@ body{
       	<button class="button-xlarge pure-button" id = "btnPhrase" onclick="startPhrase()">Phrases</button>
       	<button class="button-xlarge pure-button" id = "btnChars" onclick="startChars()">Characters</button>
 </div>
-<div id = "divChars">
-	<table align="left" style="padding-left:170px">
-		<tr>
-			<td>
-				<!--buttons-->
-				<div style="width:1000px; height:650px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
-				<table id="alpha_table">					
-				 </table>   
-				</div>
-			</td>
-		</tr>
-	</table>
-</div>
+<table>
+	<tr>
+		<td>
+			<div id = "divChars" style="padding-left:270px">
+				<table align="left" style="padding-left:170px">
+					<tr>
+						<td>
+							<!--buttons-->
+							<div style="width:1000px; height:850px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
+							<table id="alpha_table">					
+						 	</table>   
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
 
-<div id = "divQues">
-	<table align="left" style="padding-left:170px">
-		<tr>
-			<td>
-				<!--buttons-->
-				<div style="width:1000px; height:650px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
-				<table id="beta_table">					
-				 </table>   
-				</div>
-			</td>
-		</tr>
-	</table>
-</div>
+			<div id = "divQues" style="padding-left:370px">
+				<table align="left" style="padding-left:170px">
+					<tr>
+						<td>
+							<!--buttons-->
+							<div style="width:1000px; height:850px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
+							<table id="beta_table">					
+							 </table>   
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
 
-<div id = "divPhrase">
-	<table align="left" style="padding-left:170px">
-		<tr>
-			<td>
-				<!--buttons-->
-				<div style="width:1000px; height:650px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
-				<table id="phrase_table">					
-				 </table>   
-				</div>
-			</td>
-		</tr>
-	</table>
-</div>
+			<div id = "divPhrase" style="padding-left:370px">
+				<table align="left" style="padding-left:170px">
+					<tr>
+						<td>
+							<!--buttons-->
+							<div style="width:1000px; height:850px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
+							<table id="phrase_table">					
+							 </table>   
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>			
+		</td>
+		<td>
+			<div id = "divChat">
+				<table align="right" style="padding-right:70px">
+					<tr>
+						<td>
+							<!--buttons-->
+							<div style="width:1000px; height:850px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
+							<table id="chat_table">					
+							 </table>   
+							</div>
+							
+						</td>
+					</tr>
+				</table>
+			</div>			
+		</td>
+	</tr>
+</table>
+
+
+
+
 <div style="width:1000px; height:650px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">
-      <bold><label size="35%" style="padding-right:10px;font-size:25px;font-weight: bold;
+     <!--  <bold><label size="35%" style="padding-right:10px;font-size:25px;font-weight: bold;
       	padding-bottom:10px">Result:
-      </bold></label>
+      </bold></label> -->
       <label id="answer" size="82%" style="padding-right:10px;font-size:30px;font-weight: lighter;
       	padding-bottom:10px; color:blue" ></label>
 </div>

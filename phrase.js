@@ -4,6 +4,7 @@ function startPhrase(){
 	var quesTable = document.getElementById("beta_table");
 	quesTable.innerHTML = "";
 	var table = document.getElementById("phrase_table");
+	var chatTable = document.getElementById("chat_table");
 	var response_id = 76;
 	var stop_id = 13;
 	var breakFlag=false;
@@ -160,8 +161,13 @@ function startPhrase(){
 	}
 
 	function appendAnswer(value){
-		var answer = document.getElementById("answer");
-		answer.innerHTML = value;
+		// var answer = document.getElementById("answer");
+		// answer.innerHTML = value;
+		var cells = "";
+		cells += "<tr>";
+		cells +="<td style='float:left; width=100% text-align:left;' class='btn0' id=phrase_"+value+">"+value+"</td>";
+		cells += "</tr>";
+		chat_table.innerHTML += cells;
 	}
 
 	function stop_answering(){

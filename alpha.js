@@ -1,26 +1,33 @@
-function startChars(){
-	var table = document.getElementById("alpha_table");
+function startQues(){
+	var charTable = document.getElementById("alpha_table");
+	charTable.innerHTML = "";
+	var phraseTable = document.getElementById("phrase_table");
+	phraseTable.innerHTML = "";
+	var chatTable = document.getElementById("chat_table");
+
+	var table = document.getElementById("beta_table");
 	var response_id = 76;
 	var stop_id = 13;
-	var row_len = 5, col_len = 6;
-	var response_recieved = false, breakFlag=false;
+	var breakFlag=false;
 	var timeout = 1000;
-	var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","Enter","Bksp","Next","Prev"];
+	var questions = ["How are you?" ,"How was your day?", "What do you want?", "Whats happening?", "At what time?", "How was it?", "Hows the weather?"];
+	var row_len = questions.length, col_len = 1;
 
-	// $('#divChars').hide();
+	$('#divChars').hide();
 	$('#divPhrase').hide();
-	$('#divQues').hide();
+	$('#divQues').show();
 	function create_table(){
 		var cells = "";
 		var k = 0;
-		console.log(alphabet.length);
+		console.log(questions.length);
 		for(var i=0;i<row_len;i++){
 			cells += "<tr>";
-			for(var j=0;j<col_len;j++){
-				if(k<alphabet.length){
-					cells +="<td style='float:left' class='btn1' id="+(alphabet[k])+">"+(alphabet[k++])+"</td>";
-				}
-			}
+			cells +="<td style='float:left; width=100%' class='btn2' id=ques_"+(questions[k])+">"+(questions[k++])+"</td>";
+			// for(var j=0;j<col_len;j++){
+			// 	if(k<alphabet.length){
+			// 		cells +="<td style='float:left' class='btn1' id="+(alphabet[k])+">"+(alphabet[k++])+"</td>";
+			// 	}
+			// }
 			cells += "</tr>";
 		}
 
@@ -30,10 +37,9 @@ function startChars(){
 	create_table();
 
 	function highlight_row(index){
-
+		console.log(index);
 		if(index == 0){
-			t_row = table.rows[table.rows.length-1]
-			
+			t_row = table.rows[table.rows.length-1]			
 		}
 		else{
 			t_row = table.rows[index-1];
@@ -129,31 +135,42 @@ function startChars(){
 				else
 					row_id--;
 				response_recieved = false;
-				setTimeout(col_travel, timeout);
+				// setTimeout(col_travel, timeout);
+				// console.log("Row to focus:"+row_id +"  Col to focus:"+col_id+"  Value:"+questions[(row_id*col_len) + col_id]);
+				appendAnswer(questions[(row_id)]);
+				resetAll();
+				start_answering();				
 			}
 		}
 
 		function col_travel(){
-			if(!response_recieved && !breakFlag){
-				highlight_cell(row_id,col_id);
-				col_id = (col_id+1)%col_len;
-			    setTimeout(col_travel, timeout);
-			} else if(!breakFlag){
-				if(col_id==0)
-					col_id = col_len-1;
-				else
-					col_id--;
-				console.log("Row to focus:"+row_id +"  Col to focus:"+col_id+"  Value:"+alphabet[(row_id*col_len) + col_id]);
-				appendAnswer(alphabet[(row_id*col_len) + col_id]);
-				resetAll();
-				start_answering();
-			}
+			// if(!response_recieved && !breakFlag){
+			// 	highlight_cell(row_id,col_id);
+			// 	col_id = (col_id+1)%col_len;
+			//     setTimeout(col_travel, timeout);
+			// } else if(!breakFlag){
+			// 	if(col_id==0)
+			// 		col_id = col_len-1;
+			// 	else
+			// 		col_id--;
+			// 	console.log("Row to focus:"+row_id +"  Col to focus:"+col_id+"  Value:"+questions[(row_id*col_len) + col_id]);
+			// 	appendAnswer(questions[(row_id*col_len) + col_id]);
+			// 	resetAll();
+			// 	start_answering();
+			// }
+
 		}
 	}
 
 	function appendAnswer(value){
-		var answer = document.getElementById("answer");
-		answer.innerHTML += value;
+		// var answer = document.getElementById("answer");
+		// answer.innerHTML = value;
+
+		var cells = "";
+		cells += "<tr>";
+		cells +="<td style='float:left; width=100% text-align:left;' class='btn0' id=phrase_"+value+">"+value+"</td>";
+		cells += "</tr>";
+		chat_table.innerHTML += cells;
 	}
 
 	function stop_answering(){
@@ -163,35 +180,35 @@ function startChars(){
 
 	document.getElementById("myBtn").addEventListener("click", start_answering);
 
-	// var socket = null;
-	// var isopen = false;
-	// var mood = '';
-	// window.onload = function() {
-	// var artist = $("#artist").val();
-	//    $("#img1").hide();
-	//    $("#img2").hide();
-	//    socket = new WebSocket("ws://127.0.0.1:9000");
-	//    socket.binaryType = "arraybuffer";
-	//    socket.onopen = function() {
-	//       console.log("Connected!");
-	//       isopen = true;
-	//    }
-	//    socket.onmessage = function(e) {
-	//   console.log("Server called me",e.data);
-	//       if (typeof e.data == "string") {
-	//          if (e.data == 'true'){
-	// 	        $("#out").show();
-	// 	        response_recieved = true;
-	//          }
-	//          console.log("Text message received: " + e.data);
-	//       }
-	//    }
-	//    socket.onclose = function(e) {
-	//       console.log("Connection closed.");
-	//       socket = null;
-	//       isopen = false;
-	//    }
-	// };
+	var socket = null;
+	var isopen = false;
+	var mood = '';
+	window.onload = function() {
+	var artist = $("#artist").val();
+	   $("#img1").hide();
+	   $("#img2").hide();
+	   socket = new WebSocket("ws://127.0.0.1:9000");
+	   socket.binaryType = "arraybuffer";
+	   socket.onopen = function() {
+	      console.log("Connected!");
+	      isopen = true;
+	   }
+	   socket.onmessage = function(e) {
+	  console.log("Server called me",e.data);
+	      if (typeof e.data == "string") {
+	         if (e.data == 'true'){
+		        $("#out").show();
+		        response_recieved = true;
+	         }
+	         console.log("Text message received: " + e.data);
+	      }
+	   }
+	   socket.onclose = function(e) {
+	      console.log("Connection closed.");
+	      socket = null;
+	      isopen = false;
+	   }
+	};
 
 	function sendText() {
 	   if (isopen) {

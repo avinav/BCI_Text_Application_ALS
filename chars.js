@@ -5,7 +5,7 @@ function startChars(){
 	phraseTable.innerHTML = "";
 	var quesTable = document.getElementById("beta_table");
 	quesTable.innerHTML = "";
-	
+	var chatTable = document.getElementById("chat_table");
 	var table = document.getElementById("alpha_table");
 
 	var response_id = 76;
@@ -54,7 +54,7 @@ function startChars(){
 		resetTableWeight();
 		t_row = table.rows[index]
 		setRowHighlightStyle(t_row,"Yellow");
-		table.rows[index].style.fontWeight = 'bold';
+		// table.rows[index].style.fontWeight = 'bold';
 	}
 
 	function setRowHighlightStyle(row, color){
@@ -125,8 +125,7 @@ function startChars(){
 	function start_answering(){
 		breakFlag = false;
 		response_recieved = false;
-		var row_id = 0, col_id=0;
-
+		var row_id = 0, col_id=0;		
 		row_travel();
 
 		function row_travel(){

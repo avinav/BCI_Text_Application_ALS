@@ -3,13 +3,14 @@ function startQues(){
 	charTable.innerHTML = "";
 	var phraseTable = document.getElementById("phrase_table");
 	phraseTable.innerHTML = "";
+	var chatTable = document.getElementById("chat_table");
 
 	var table = document.getElementById("beta_table");
 	var response_id = 76;
 	var stop_id = 13;
 	var breakFlag=false;
 	var timeout = 1000;
-	var questions = ["What do you want?", "How are you?" ,"Whats up?","Enter","Bksp","Next","Prev"];
+	var questions = ["What do you want?", "How are you?" ,"Whats happening?","At what time?","Hows the weather?","When you will be here?", "Prev"];
 	var row_len = questions.length, col_len = 1;
 
 	$('#divChars').hide();
@@ -163,8 +164,14 @@ function startQues(){
 	}
 
 	function appendAnswer(value){
-		var answer = document.getElementById("answer");
-		answer.innerHTML = value;
+		// var answer = document.getElementById("answer");
+		// answer.innerHTML = value;
+
+		var cells = "";
+		cells += "<tr>";
+		cells +="<td style='float:left; width=100% text-align:left;' class='btn0' id=phrase_"+value+">"+value+"</td>";
+		cells += "</tr>";
+		chat_table.innerHTML += cells;
 	}
 
 	function stop_answering(){
