@@ -22,13 +22,13 @@ class MyServerProtocol(WebSocketServerProtocol):
             print("Text message received: {0}".format(payload.decode('utf8')))
 
         # echo back message verbatim
-	count = 1
-	while 1==1:
-	    #str = ""+count	     
-	    self.sendMessage(str(count).encode('utf8'), isBinary)
-	    count = count + 1
-	    if count == 5:
-	    	break;	 
+	# count = 1
+	# while 1==1:
+	#     #str = ""+count	     
+	#     self.sendMessage(str(count).encode('utf8'), isBinary)
+	#     count = count + 1
+	#     if count == 5:
+	#     	break;	 
 
     def onClose(self, wasClean, code, reason):
         print("WebSocket connection closed: {0}".format(reason))
