@@ -181,7 +181,7 @@ function startChars(){
 				if(flagAns == false){
 
 					cells += "<tr>";
-					cells +="<td style='float:left; width=100% text-align:left;' class='btn0' id=phrase_"+value+"><span style='font-size:20px'>Me: </span><label>"+value+"</label></td>";
+					cells +="<td style='float:left; width=100% text-align:left;' class='btn0' id=phrase_"+value+"><span style='font-size:15px'>Me: </span><label>"+value+"</label></td>";
 					cells += "</tr>";
 					flagAns = true;
 				}
