@@ -43,7 +43,7 @@ var chatTable = document.getElementById("chat_table");
 	      
   			var cells = "";	
 			cells += "<tr>";
-			cells +="<td style='float:right; width=100% text-align:right;' class='btn0' id=phrase_"+e.data+"><label>"+e.data+"<span style='font-size:15px'>: Avi</span></label></td>";
+			cells +="<td style='float:right; width=100% text-align:right;' class='btn0' id=phrase_"+e.data+"><label style='font-size:15px'>"+e.data+"<span>: Avi</span></label></td>";
 			cells += "</tr>";
 			chat_table.innerHTML += cells;
 	   }
