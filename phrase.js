@@ -9,7 +9,7 @@ function startPhrase(){
 	var stop_id = 13;
 	var breakFlag=false;
 	var timeout = 1000;
-	var questions = ["Yes", "No" ,"Okay","Lol","I am good","Great to see you","Prev"];
+	var questions = ["Yes", "No" ,"Okay","Lol","I am good","Great to see you","Back"];
 	var row_len = questions.length, col_len = 1;
 
 	$('#divChars').hide();
@@ -164,7 +164,7 @@ function startPhrase(){
 	function appendAnswer(value){
 		// var answer = document.getElementById("answer");
 		// answer.innerHTML = value;		
-    	if(value == "Prev"){
+    	if(value == "Back"){
 			upper();
 		}
 		else{
@@ -184,7 +184,7 @@ function startPhrase(){
 		resetAll();
 	}
 
-	document.getElementById("myBtn").addEventListener("click", start_answering);
+	// document.getElementById("myBtn").addEventListener("click", start_answering);
 
 	var socket = null;
 	var isopen = false;

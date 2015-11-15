@@ -196,7 +196,7 @@ function upper(){
 		resetAll();
 	}
 
-	document.getElementById("myBtn").addEventListener("click", start_answering);
+	// document.getElementById("myBtn").addEventListener("click", start_answering);
 
 	var socket = null;
 	var isopen = false;

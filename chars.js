@@ -13,7 +13,7 @@ function startChars(){
 	var row_len = 5, col_len = 6;
 	var breakFlag=false;
 	var timeout = 1000;
-	var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","Enter","Bksp","Prev","end"];
+	var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","Enter","Bksp","Back","end"];
 	var temp1 = "";
 	$('#divChars').show();
 	$('#divPhrase').hide();
@@ -164,7 +164,7 @@ function startChars(){
 	function appendAnswer(value){
 		
 		var answer = document.getElementById("answer");
-		if(value != "Prev" && value != "Enter" && value != "Bksp"){
+		if(value != "Back" && value != "Enter" && value != "Bksp"){
 			// answer.innerHTML += value;
 
 			if(chatTable.rows.length == 0){				
@@ -212,7 +212,7 @@ function startChars(){
 			else
 				label.innerHTML = temp.substring(0,temp.length-1);
 		}
-		else if(value == "Prev"){
+		else if(value == "Back"){
 			upper();
 		}
 
@@ -224,7 +224,7 @@ function startChars(){
 		resetAll();
 	}
 
-	document.getElementById("myBtn").addEventListener("click", start_answering);
+	// document.getElementById("myBtn").addEventListener("click", start_answering);
 
 	var socket = null;
 	var isopen = false;

@@ -11,7 +11,7 @@ function startQues(){
 	var stop_id = 13;
 	var breakFlag=false;
 	var timeout = 1000;
-	var questions = ["What do you want?", "How are you?" ,"Whats happening?","At what time?","Hows the weather?","When you will be here?", "Prev"];
+	var questions = ["What do you want?", "How are you?" ,"Whats happening?","At what time?","Hows the weather?","When you will be here?", "Back"];
 	var row_len = questions.length, col_len = 1;
 
 	$('#divChars').hide();
@@ -168,7 +168,7 @@ function startQues(){
 		// var answer = document.getElementById("answer");
 		// answer.innerHTML = value;
 
-    	if(value == "Prev"){
+    	if(value == "Back"){
 			upper();
 		}
 		else{
@@ -189,7 +189,7 @@ function startQues(){
 		resetAll();
 	}
 
-	document.getElementById("myBtn").addEventListener("click", start_answering);
+	// document.getElementById("myBtn").addEventListener("click", start_answering);
 
 	var socket = null;
 	var isopen = false;
