@@ -170,7 +170,7 @@ function startPhrase(){
 		else{
 			var cells = "";
 			cells += "<tr>";
-			cells +="<td style='float:left; width=100% text-align:left;' class='btn0' id=phrase_"+value+">Me: "+value+"</td>";
+			cells +="<td style='float:left; width=100% text-align:left;' class='btn0' id=phrase_"+value+"><label style='font-size:20px'>Me: </label>"+value+"</td>";
 			cells += "</tr>";
 			chat_table.innerHTML += cells;
 	    	console.log("calling sms func");

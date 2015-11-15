@@ -14,7 +14,7 @@ function startChars(){
 	var breakFlag=false;
 	var timeout = 1000;
 	var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","Enter","Bksp","Prev","end"];
-
+	var temp1 = "";
 	$('#divChars').show();
 	$('#divPhrase').hide();
 	$('#divQues').hide();
@@ -160,24 +160,57 @@ function startChars(){
 			}
 		}
 	}
-
+	flagAns = false;
 	function appendAnswer(value){
 		
 		var answer = document.getElementById("answer");
 		if(value != "Prev" && value != "Enter" && value != "Bksp"){
-			answer.innerHTML += value;
+			// answer.innerHTML += value;
+
+			if(chatTable.rows.length == 0){				
+				var cells = "";
+				cells += "<tr>";
+				cells +="<td style='float:left; width=100% text-align:left;' class='btn0' id=phrase_"+value+"><span style='font-size:20px'>Me: </span><label>"+value+"</label></td>";
+				cells += "</tr>";
+				chat_table.innerHTML += cells;	
+				temp1 += value;
+				flagAns = true;			
+			}
+			else
+			{
+				if(flagAns == false){
+
+					cells += "<tr>";
+					cells +="<td style='float:left; width=100% text-align:left;' class='btn0' id=phrase_"+value+"><span style='font-size:20px'>Me: </span><label>"+value+"</label></td>";
+					cells += "</tr>";
+					flagAns = true;
+				}
+				else{
+					var label = chatTable.rows[chatTable.rows.length-1].childNodes[0].childNodes[1];
+					label.innerHTML = label.innerHTML+value;
+				}
+				
+				// row = chatTable.rows[chatTable.rows.length-1].childs[0]
+				 
+			}
 		}
 		else if(value == "Enter"){
 		    console.log("calling sms func");
-		    send_sms(value);
+			var label = chatTable.rows[chatTable.rows.length-1].childNodes[0].childNodes[1];
+			label.innerHTML = label.innerHTML;		    
+		    send_sms(label.innerHTML);
 		    console.log("called sms func");
+		    flagAns = false;
 		}
 		else if(value == "Bksp"){
 			var temp = answer.innerHTML;
+			var label = chatTable.rows[chatTable.rows.length-1].childNodes[0].childNodes[1];			
+			temp = label.innerHTML;
+
 			if(temp.length == 1)
-				answer.innerHTML = "";
+				label.innerHTML = "";
 			else
-				answer.innerHTML = temp.substring(0,temp.length-1);
+				label.innerHTML = temp.substring(0,temp.length-1);
 		}
 		else if(value == "Prev"){
 			upper();
