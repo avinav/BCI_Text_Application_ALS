@@ -116,13 +116,14 @@ body{
     font-size: 300%;
     /*padding-right: 50px;*/
     padding: 0px;
-	background-color: #ffff; background-image: -webkit-gradient(linear, left top, left bottom, from(#cef8ff), to(#7fe0f8));
-	background-image: -webkit-linear-gradient(top, #cef8ff, #7fe0f8);
+	background-color: #ffff; 
+	/*background-image: -webkit-gradient(linear, left top, left bottom, from(#cef8ff), to(#7fe0f8));*/
+	/*background-image: -webkit-linear-gradient(top, #cef8ff, #7fe0f8);
 	background-image: -moz-linear-gradient(top, #cef8ff, #7fe0f8);
 	background-image: -ms-linear-gradient(top, #cef8ff, #7fe0f8);
 	background-image: -o-linear-gradient(top, #cef8ff, #7fe0f8);
 	background-image: linear-gradient(to bottom, #cef8ff, #7fe0f8);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#cef8ff, endColorstr=#7fe0f8);    
-    border-radius: 25px;
+    border-radius: 25px;*/
 	margin-right: 45px;
 }
 
@@ -154,7 +155,7 @@ body{
 </div>
 <table>
 	<tr>
-		<td>
+		<td width = "70%">
 			<div id = "divChars" style="padding-left:270px">
 				<table align="left" style="padding-left:170px">
 					<tr>
@@ -195,7 +196,18 @@ body{
 						</td>
 					</tr>
 				</table>
-			</div>			
+			</div>	
+			<div id = "dummy" style="padding-left:370px">
+				<table align="left" style="padding-left:170px">
+					<tr>
+						<td>
+							<!--buttons-->
+						<!-- 	<div style="width:1000px; height:850px; overflow:hidden; margin: 0 auto; position:relative; margin-top:25px;">  
+							</div> -->
+						</td>
+					</tr>
+				</table>
+			</div>						
 		</td>
 		<td>
 			<div id = "divChat">
@@ -247,6 +259,7 @@ $(document).ready(function(){
 <script type="text/javascript" src="chars.js"></script>
 <script type="text/javascript" src="ques.js"></script>
 <script type="text/javascript" src="phrase.js"></script>
+<script type="text/javascript" src="upper.js"></script>
 <script type="text/javascript" src="socket.js"></script>
 </body>
 </html>

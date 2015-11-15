@@ -13,7 +13,7 @@ function startChars(){
 	var row_len = 5, col_len = 6;
 	var breakFlag=false;
 	var timeout = 1000;
-	var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","Enter","Bksp","Next","Prev"];
+	var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","Enter","Bksp","Prev","end"];
 
 	$('#divChars').show();
 	$('#divPhrase').hide();
@@ -39,7 +39,7 @@ function startChars(){
 	}
 
 	create_table();
-
+	start_answering();
 	function highlight_row(index){
 
 		if(index == 0){
@@ -162,8 +162,28 @@ function startChars(){
 	}
 
 	function appendAnswer(value){
+		
 		var answer = document.getElementById("answer");
-		answer.innerHTML += value;
+		if(value != "Prev" && value != "Enter" && value != "Bksp"){
+			answer.innerHTML += value;
+		}
+		else if(value == "Enter"){
+		    console.log("calling sms func");
+		    send_sms(value);
+		    console.log("called sms func");
+		}
+		else if(value == "Bksp"){
+			var temp = answer.innerHTML;
+			if(temp.length == 1)
+				answer.innerHTML = "";
+			else
+				answer.innerHTML = temp.substring(0,temp.length-1);
+		}
+		else if(value == "Prev"){
+			upper();
+		}
+
+
 	}
 
 	function stop_answering(){

@@ -1,5 +1,6 @@
 var response_recieved = false;
 var socket = null;
+var chatTable = document.getElementById("chat_table");
 	var isopen = false;
 	var mood = '';
 	var socket1 = null;
@@ -40,6 +41,11 @@ var socket = null;
 	  
 	         console.log("Text message received: " + e.data);
 	      
+  			var cells = "";	
+			cells += "<tr>";
+			cells +="<td style='float:left; width=100% text-align:left;' class='btn0' id=phrase_"+e.data+">Avi: "+e.data+"</td>";
+			cells += "</tr>";
+			chat_table.innerHTML += cells;
 	   }
 	   socket1.onclose = function(e) {
 	      console.log("Connection closed.");

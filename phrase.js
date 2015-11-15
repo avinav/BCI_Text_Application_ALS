@@ -9,7 +9,7 @@ function startPhrase(){
 	var stop_id = 13;
 	var breakFlag=false;
 	var timeout = 1000;
-	var questions = ["Yes", "No" ,"Okay","Lol","Bksp","Next","Prev"];
+	var questions = ["Yes", "No" ,"Okay","Lol","I am good","Great to see you","Prev"];
 	var row_len = questions.length, col_len = 1;
 
 	$('#divChars').hide();
@@ -34,7 +34,8 @@ function startPhrase(){
 	}
 
 	create_table();
-
+	
+	start_answering();
 	function highlight_row(index){
 
 		if(index == 0){
@@ -162,12 +163,20 @@ function startPhrase(){
 
 	function appendAnswer(value){
 		// var answer = document.getElementById("answer");
-		// answer.innerHTML = value;
-		var cells = "";
-		cells += "<tr>";
-		cells +="<td style='float:left; width=100% text-align:left;' class='btn0' id=phrase_"+value+">"+value+"</td>";
-		cells += "</tr>";
-		chat_table.innerHTML += cells;
+		// answer.innerHTML = value;		
+    	if(value == "Prev"){
+			upper();
+		}
+		else{
+			var cells = "";
+			cells += "<tr>";
+			cells +="<td style='float:left; width=100% text-align:left;' class='btn0' id=phrase_"+value+">Me: "+value+"</td>";
+			cells += "</tr>";
+			chat_table.innerHTML += cells;
+	    	console.log("calling sms func");
+		    send_sms(value);
+		    console.log("called sms func");
+		}
 	}
 
 	function stop_answering(){

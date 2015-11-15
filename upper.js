@@ -1,57 +1,61 @@
-
-function startQues(){
-	var charTable = document.getElementById("alpha_table");
-	charTable.innerHTML = "";
+function upper(){
+	var answer = document.getElementById("answer");
+	answer.innerHTML = "";
 	var phraseTable = document.getElementById("phrase_table");
 	phraseTable.innerHTML = "";
+	var quesTable = document.getElementById("beta_table");
+	quesTable.innerHTML = "";
 	var chatTable = document.getElementById("chat_table");
+	// chatTable.innerHTML;
+	var alphaTable = document.getElementById("alpha_table");
+	alphaTable.innerHTML = "";
 
-	var table = document.getElementById("beta_table");
 	var response_id = 76;
 	var stop_id = 13;
+	
 	var breakFlag=false;
 	var timeout = 1000;
-	var questions = ["What do you want?", "How are you?" ,"Whats happening?","At what time?","Hows the weather?","When you will be here?", "Prev"];
-	var row_len = questions.length, col_len = 1;
-
+	var table = ["btnQues","btnPhrase","btnChars"];
+	var row_len = table.length, col_len = 1;
 	$('#divChars').hide();
 	$('#divPhrase').hide();
-	$('#divQues').show();
-	function create_table(){
-		var cells = "";
-		var k = 0;
-		console.log(questions.length);
-		for(var i=0;i<row_len;i++){
-			cells += "<tr>";
-			cells +="<td style='float:left; width=100%' class='btn2' id=ques_"+(questions[k])+">"+(questions[k++])+"</td>";
-			// for(var j=0;j<col_len;j++){
-			// 	if(k<alphabet.length){
-			// 		cells +="<td style='float:left' class='btn1' id="+(alphabet[k])+">"+(alphabet[k++])+"</td>";
-			// 	}
-			// }
-			cells += "</tr>";
-		}
-
-		table.innerHTML = cells;
-	}
-
-	create_table();
+	$('#divQues').hide();	
 	start_answering();
+	// function create_table(){		
+	// 	var cells = "";
+	// 	var k = 0;
+	// 	console.log(alphabet.length);
+	// 	for(var i=0;i<row_len;i++){
+	// 		cells += "<tr>";
+	// 		for(var j=0;j<col_len;j++){
+	// 			if(k<alphabet.length){
+	// 				cells +="<td style='float:left' class='btn1' id="+(alphabet[k])+">"+(alphabet[k++])+"</td>";
+	// 			}
+	// 		}
+	// 		cells += "</tr>";
+	// 	}
+
+	// 	table.innerHTML = cells;
+	// }
+
+	// create_table();
+
 	function highlight_row(index){
 
 		if(index == 0){
-			t_row = table.rows[table.rows.length-1]
+			t_row = table[table.length-1]
 			
 		}
 		else{
-			t_row = table.rows[index-1];
+			t_row = table[index-1];
 		}
-
-		setRowHighlightStyle(t_row,"White");
-		resetTableWeight();
-		t_row = table.rows[index]
-		setRowHighlightStyle(t_row,"Yellow");
-		table.rows[index].style.fontWeight = 'bold';
+		$('#'+t_row).css("background-color", "#cef8ff");
+		// setRowHighlightStyle(t_row,"White");
+		// resetTableWeight();
+		t_row = table[index];
+		$('#'+t_row).css("background-color", "Yellow");
+		// setRowHighlightStyle(t_row,"Yellow");
+		// table.rows[index].style.fontWeight = 'bold';
 	}
 
 	function setRowHighlightStyle(row, color){
@@ -92,14 +96,16 @@ function startQues(){
 		}
 	}
 
-	function resetAll(){
-		var rows = table.rows;
+	function resetAll(row_id){
+		var rows = table;
 		for(var i = 0; i < rows.length; i++){
-			childs = rows[i].childNodes;
-			for(var j = 0; j < childs.length; j++){
-				child = childs[j].id;
-				$('#'+child).css("background-color", "White");
+			if(i != row_id){
+				$('#'+rows[i]).css("background-color", "#cef8ff");
 			}
+			// for(var j = 0; j < childs.length; j++){
+			// 	child = childs[j].id;
+			// 	$('#'+child).css("background-color", "White");
+			// }
 		}
 		// for(var i=0;i<row_len;i++){
 		// 		table.rows[i].style.fontWeight = 'normal';
@@ -115,6 +121,8 @@ function startQues(){
 	   		stop_answering();
 	   }else if (key == response_id) {
 	       response_recieved = true;
+	       // $(document).unbind("onkeyup");
+	       // window.off("onkeyup");
 	   }
 	}
 
@@ -122,8 +130,7 @@ function startQues(){
 	function start_answering(){
 		breakFlag = false;
 		response_recieved = false;
-		var row_id = 0, col_id=0;
-
+		var row_id = 0, col_id=0;		
 		row_travel();
 
 		function row_travel(){
@@ -138,49 +145,51 @@ function startQues(){
 					row_id--;
 				response_recieved = false;
 				// setTimeout(col_travel, timeout);
-				// console.log("Row to focus:"+row_id +"  Col to focus:"+col_id+"  Value:"+questions[(row_id*col_len) + col_id]);
-				appendAnswer(questions[(row_id)]);
-				resetAll();
-				start_answering();				
+				appendAnswer(table[(row_id)]);
+				// resetAll(row_id);
 			}
 		}
 
-		function col_travel(){
-			// if(!response_recieved && !breakFlag){
-			// 	highlight_cell(row_id,col_id);
-			// 	col_id = (col_id+1)%col_len;
-			//     setTimeout(col_travel, timeout);
-			// } else if(!breakFlag){
-			// 	if(col_id==0)
-			// 		col_id = col_len-1;
-			// 	else
-			// 		col_id--;
-			// 	console.log("Row to focus:"+row_id +"  Col to focus:"+col_id+"  Value:"+questions[(row_id*col_len) + col_id]);
-			// 	appendAnswer(questions[(row_id*col_len) + col_id]);
-			// 	resetAll();
-			// 	start_answering();
-			// }
-
-		}
+		// function col_travel(){
+		// 	if(!response_recieved && !breakFlag){
+		// 		highlight_cell(row_id,col_id);
+		// 		col_id = (col_id+1)%col_len;
+		// 	    setTimeout(col_travel, timeout);
+		// 	} else if(!breakFlag){
+		// 		if(col_id==0)
+		// 			col_id = col_len-1;
+		// 		else
+		// 			col_id--;
+		// 		console.log("Row to focus:"+row_id +"  Col to focus:"+col_id+"  Value:"+alphabet[(row_id*col_len) + col_id]);
+		// 		appendAnswer(alphabet[(row_id*col_len) + col_id]);
+		// 		resetAll();
+		// 		start_answering();
+		// 	}
+		// }
 	}
 
 	function appendAnswer(value){
+		
 		// var answer = document.getElementById("answer");
-		// answer.innerHTML = value;
-
-    	if(value == "Prev"){
+		// if(value != "Prev" && value != "Enter" && value != "Bksp"){
+		// 	answer.innerHTML += value;
+		// }
+		// else if(value == "Enter"){
+		//     console.log("calling sms func");
+		//     send_sms(value);
+		//     console.log("called sms func");
+		// }
+		// else if(value == "Bksp"){
+		// 	var temp = answer.innerHTML;
+		// 	if(temp.length == 1)
+		// 		answer.innerHTML = "";
+		// 	else
+		// 		answer.innerHTML = temp.substring(0,temp.length-1);
+		// }
+		if(value == "Prev"){
 			upper();
 		}
-		else{
-			var cells = "";
-			cells += "<tr>";
-			cells +="<td style='float:left; width=100% text-align:left;' class='btn0' id=phrase_"+value+">Me: "+value+"</td>";
-			cells += "</tr>";
-			chat_table.innerHTML += cells;
-		    console.log("calling sms func");
-		    send_sms(value);
-		    console.log("called sms func");
-		}	    
+		$('#'+value).click();
 
 	}
 
@@ -243,3 +252,4 @@ function startQues(){
 	};	
 }
 
+upper();
