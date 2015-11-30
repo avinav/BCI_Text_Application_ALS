@@ -11,3 +11,4 @@ provides a tool for ALS patients to perform basic interactions. It uses Muse hea
 We used Muse to capture movement of the specific set of muscles. For now, we are focusing on eye blinks and jaw clenches to store response from patients. We are expecting that the patient can control at least one of the two muscles. We also built an alphacore board as a web app that be controlled by the patients using their gestures and emotions. The communication between patients and the rest of the world is done using Twilio API.
 
 
+
