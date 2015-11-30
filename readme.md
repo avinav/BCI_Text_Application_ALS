@@ -12,3 +12,6 @@ We used Muse to capture movement of the specific set of muscles. For now, we are
 
 
 
+![Character](/ss/bci1.jpg)
+
+![Phrase](/ss/bci2.jpg)
